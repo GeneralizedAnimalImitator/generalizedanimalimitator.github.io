@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Generalized Animal Imitator: Agile Locomotion with Versatile Motion Prior">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generalized Animal Imitator: Agile Locomotion with Versatile Motion Prior</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Generalized Animal Imitator: <br> Agile Locomotion with Versatile Motion Prior</h1>
+          <h2 class="title is-4">CORL 2024 Submission 16</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+<section class="overall teaser">
+  <div class="container">
+
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-4">Our robot perform diverse agile locomotion skills with a <b style="color:rgb(183, 0, 0)">Single Instructable Motion Prior </b>.</h2>
+      <p></p>
+    </div>
+
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="hero-body">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/demos_480P/demos/VIM_video_Supp_backflip_box.mp4" type="video/mp4">
+            </video>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/demos_480P/demos/vim_slow_jump_remake.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/demos_480P/demos/VIM_video_Supp_jump_table.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/demos_480P/demos/vim_slow_jump_curb.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/demos_480P/demos/VIM_video_Supp_jump_sand.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="hero-body">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/demos_480P/demos/demo_v3.mp4" type="video/mp4">
+            </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>    
+The agility of animals, particularly in complex activities such as running, turning, jumping, and backflipping, stands as an exemplar for robotic system design. Transferring this suite of behaviors to legged robotic systems introduces essential inquiries: How can a robot be trained to learn multiple locomotion behaviors simultaneously? 
+How can the robot execute these tasks with a smooth transition?
+How to integrate these skills for wide-range applications?  
+This paper introduces the Versatile Instructable Motion prior (VIM) - a Reinforcement Learning framework designed to incorporate a range of agile locomotion tasks suitable for advanced robotic applications.
+Our framework enables legged robots to learn diverse agile low-level skills by imitating animal motions and manually designed motions.
+Our Functionality reward guides the robot's ability to adopt varied skills, and our Stylization reward ensures that robot motions align with reference motions.
+Our evaluations of the VIM framework span both simulation environments and real-world deployment. To the best of our knowledge, this is the first work that allows a robot to concurrently learn diverse agile locomotion skills using a single learning-based controller in the real world. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Method. -->
+
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-4">Our system learns a <b style="color:rgb(183, 0, 0)">Single Instructable Motion Prior </b>from a diverse reference motion dataset.</h2>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"></h2>
+        <div class="content has-text-justified">
+          <p>  
+          We present the Versatile Instructable Motion prior (VIM), designed to acquire a wide range of agile locomotion skills concurrently from multiple reference motions. The development of our motion prior involves three stages: assembling a comprehensive dataset of reference motions sourced from diverse origins, crafting a motion prior that processes varying reference motions and the robot's proprioceptive feedback to generate motor commands, and finally, utilizing an imitation-based reward mechanism to effectively train this motion prior.
+
+          Given the formulation of our motion prior, the robot learns diverse agile locomotion skills with our imitation reward and reward scheduling mechanics. Our reward offers consistent guidance, ensuring the robot captures both the functionality and style inherent to the reference motion.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="container", align="center" style="margin-top: -12px; margin-bottom: 32px">
+        <img src="figures/pipeline.gif" style="width: 100%;" alt="">
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"></h2>
+        <div class="content has-text-justified">
+          <p>  
+          Our motion prior consists of a reference motion encoder, and a low-level policy. Reference motion encoder maps varying reference motions into a condensed latent skill space, and low-level policy utilizes our imitation reward, reproduces the robot motion given a latent command.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="container", align="center" style="margin-top: -12px; margin-bottom: 32px">
+        <img src="figures/prior_arch.gif" style="width: 100%;" alt="">
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"></h2>
+        <div class="content has-text-justified">
+          <p>  
+          Given the formulation of our motion prior, the robot learns diverse agile locomotion skills with our imitation reward and reward scheduling mechanics. Our reward offers consistent guidance, ensuring the robot captures both the functionality and style inherent to the reference motion.
+
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="container", align="center" style="margin-top: -12px; margin-bottom: 32px">
+        <img src="figures/reward.gif" style="width: 100%;" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="videos">
+  <div class="container">
+
+    <div class="columns is-centered has-text-centered">
+      <p></p>
+      <h2 class="title is-4">Learned Low-Level Skills (<b style="color:rgb(183, 0, 0)">With A Single Policy</b>)</h2>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Backflipping</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-5"> Reference Motion </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/ref_motions/jump_backward_flip.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> VIM </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/vim/Jumpbackwardflipremake.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> Motion Imitation </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/motion_imitation/BackwardflipNoGail.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> GAIL </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/gail/JumpBackwardflipNoimitation.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Jump Forward</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-5"> Reference Motion </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/ref_motions/jump_forward_d80.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> VIM </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/vim/Jumpforwardd80remake_trimmed.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> Motion Imitation </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/motion_imitation/JumpForwardd80NoGail.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> GAIL </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/gail/Jumpforwardd80Noimitation.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Jump While Running</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-5"> Reference Motion </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/ref_motions/jump07.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> VIM </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/vim/Jump07remake.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> Motion Imitation </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/motion_imitation/Jump07NoGail.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> GAIL </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/gail/Jump07Noimitation.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Canter</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-5"> Reference Motion </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/ref_motions/canter03.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> VIM </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/vim/Canter03.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> Motion Imitation </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/motion_imitation/canter03NoGail.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> GAIL </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/gail/Canter03Noimitation.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Jump Forward (Synthesized)</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-5"> Reference Motion </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/ref_motions/synthesized_jump_forward.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> VIM </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/vim/Synthesizedjumpforwardremake.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> Motion Imitation </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/motion_imitation/Synthesizedjumpforward.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> GAIL </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/gail/SynthesizedjumpforwardNoimitation.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <!-- Label is incorrect so manually flip here -->
+        <h2 class="title is-4">Right Turn</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-5"> Reference Motion </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/ref_motions/left_turn.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> VIM </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/vim/Leftturn.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> Motion Imitation </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/motion_imitation/LeftturnNoGail.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> GAIL </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/gail/LeftturnNoimitation.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <!-- Label is incorrect so manually flip here -->
+        <h2 class="title is-4">Left Turn</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-5"> Reference Motion </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/ref_motions/right_turn.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> VIM </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/vim/Rightturn.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> Motion Imitation </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/motion_imitation/RightturnNoGail.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> GAIL </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/gail/RightturnNoimitation.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Trot</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-5"> Reference Motion </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/ref_motions/trot.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> VIM </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/vim/TrotRemake.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> Motion Imitation </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/motion_imitation/TrotNoGail.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> GAIL </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/gail/TrotNoimitation.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Pace</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-5"> Reference Motion </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/ref_motions/pace.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> VIM </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/vim/Pace_trimmed.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> Motion Imitation </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/motion_imitation/PaceNoGail.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> GAIL </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/gail/PaceNoImitation.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Walk</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-5"> Reference Motion </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/ref_motions/walk00.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> VIM </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/vim/Walk00remake.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> Motion Imitation </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/motion_imitation/Walk00NoGail.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> GAIL </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/gail/Walk00Noimitation.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-4">Left Turn (Synthesized)</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-5"> Reference Motion </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/ref_motions/synthesized_left_turn00.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> VIM </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/vim/Synthesizedleftturn.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> Motion Imitation </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/motion_imitation/Synthesizedleftturn.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-5"> GAIL </h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%" style="border-radius:10px; ">
+              <source src="videos/compressed_360P/gail/SynthesizedleftturnNoimitation.mov.mp4" type="video/mp4"/>
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div> 
+</section>
+
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+    </code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Here</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
